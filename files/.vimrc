@@ -21,11 +21,11 @@ Plugin 'c9s/vikube.vim'
 Plugin 'technosophos/vim-kubernetes-snippets'
 "Chef autocomplete
 Plugin 'vadv/vim-chef'
-
 "Neobundle autocomplete plugins
 "Plugin 'Shougo/neocomplcache'
 "Plugin 'Shougo/neosnippet-snippets'
 "Plugin 'Shougo/neocomplcache-snippets-complete'
+Plugin 'Shougo/neocomplete.vim'
 
 "vim undotree
 Plugin 'mbbill/undotree'
@@ -46,6 +46,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'low-ghost/nerdtree-fugitive'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'bling/vim-bufferline'
+"Plugin 'ryanoasis/vim-devicons'
+"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'unkiwii/vim-nerdtree-sync'
+Plugin 'ctrlpvim/ctrlp.vim'
+
 
 "Open urls from VIM
 Plugin 'tyru/open-browser.vim' "Snipmate and other snippets - works in addition to neo snippets above
@@ -72,7 +78,9 @@ Plugin 'raimondi/delimitmate'
 "Puppet plugins
 Plugin 'rodjek/vim-puppet'
 Plugin 'majutsushi/tagbar' "<F8> :TagbarToggle tags support for current file
-
+"Statusbar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 
 " Plugin 'vim-jira-complete'
@@ -108,7 +116,13 @@ filetype plugin on "from nerdtreecommenter plugin
 filetype plugin indent on    " required
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+""""""""""""""""""""""""""""""""""""""""""""""
+"ctrlp settings
+let g:ctrlp_root_markers=['.prjroot']
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
 "set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 "Always show statusline
 set statusline+=%F
@@ -196,8 +210,12 @@ let g:nerdtree_tabs_no_startup_for_diff=1
 let g:nerdtree_tabs_open_on_new_tab=1
 let g:nerdtree_tabs_meaningful_tab_names=1
 let g:nerdtree_tabs_autoclose=1
+let g:NERDTreeChDirMode = 2
 let NERDTreeShowHidden=1
 let NERDTreeDirArrows=1
+"Start hidden
+"let g:NERDTreeHijackNetrw=0
+
 " map <C-n> :NERDTreeToggle<CR>
 nmap <silent> <leader>t :NERDTreeToggle $MYVIMRC<CR>
 "close vim if only window left open is nerdtree
@@ -227,7 +245,14 @@ let g:NERDTreeIndicatorMapCustom = {
 "Ggr(e)p - search the full repo with git grep
 "(s)tatus - jump to file in fugitive status window
 
-
+"Nerdtree devicons
+"set guifont=DroidSansMono\ Nerd\ Font\ 11
+"set encoding=utf8
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
+"set guifont=DroidSansMono\ Nerd\ Font\ Mono:h11
+"set guifont=PowerlineSymbols:h11
+"let g:airline_powerline_fonts = 1
+"PowerlineSymbols.otf: PowerlineSymbols:style=Medium
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -286,28 +311,29 @@ nnoremap <silent> <F11> :YRShow<CR>
 """""""""""""""""""""""""""""""""""
 
 "vim-airline config
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline_right_sep='<'
-"let g:airline_detect_modified=1
-"let g:airline_detect_paste=1
-"let g:airline_detect_iminsert=0
-"let g:airline_inactive_collapse=1
-"let g:airline_powerline_fonts=0
-"let g:airline_mode_map = {
-           "\ '__' : '-',
-           "\ 'n'  : 'N',
-           "\ 'i'  : 'I',
-           "\ 'R'  : 'R',
-           "\ 'c'  : 'C',
-           "\ 'v'  : 'V',
-           "\ 'V'  : 'V',
-           "\ '^V' : 'V',
-           "\ 's'  : 'S',
-           "\ 'S'  : 'S',
-           "\ '^S' : 'S',
-           "\ }
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_right_sep='<'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_detect_iminsert=0
+let g:airline_inactive_collapse=1
+let g:airline_powerline_fonts=0
+let g:airline_mode_map = {
+           \ '__' : '-',
+           \ 'n'  : 'N',
+           \ 'i'  : 'I',
+           \ 'R'  : 'R',
+           \ 'c'  : 'C',
+           \ 'v'  : 'V',
+           \ 'V'  : 'V',
+           \ '^V' : 'V',
+           \ 's'  : 'S',
+           \ 'S'  : 'S',
+           \ '^S' : 'S',
+           \ }
 
 
 """"""""""""""""""""""""""""""""""""""""""""""

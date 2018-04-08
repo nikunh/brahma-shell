@@ -57,8 +57,7 @@ git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh &&\
 #sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd 
 #NOTVISIBLE "in users profile"
 #echo "export VISIBLE=now" >> /etc/profile
-#RUN git clone https://github.com/powerline/fonts.git --depth=1
-#RUN sh fonts/install.sh
+#cd /tmp && git clone https://github.com/powerline/fonts.git --depth=1 && sh fonts/install.sh && cd -
 
 #RUN adduser --disabled-password --gecos '' $sn
 

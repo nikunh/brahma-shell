@@ -26,7 +26,13 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time ram os_icon load ip aws)
 alias colors_table='for code ({000..255}) print -P -- "$code: %F{$code}This is how your text would look like%f"'
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
-
+##############################################
+#https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Options.md
+SPACESHIP_TIME_SHOW='true' 
+SPACESHIP_TIME_FORMAT="%D %T" 
+ 
+#
+#############################################
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
 
