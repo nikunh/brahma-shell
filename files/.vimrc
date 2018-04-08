@@ -35,7 +35,7 @@ Plugin 'gregsexton/gitv'
 "Python related
 Plugin 'davidhalter/jedi-vim'
 "Vim colors
-"Plugin 'croaker/mustang-vim'
+Plugin 'croaker/mustang-vim'
 "Vim git integrations
 Plugin 'tpope/vim-fugitive' "Gedit (and :Gsplit, :Gvsplit, :Gtabedit, ...)  - Help at https://github.com/tpope/vim-fugitive
 Plugin 'airblade/vim-gitgutter' "Show git changed linesin currently open file  near line numbers in side status bar,stage/unstage etc - Help at https://github.com/airblade/vim-gitgutter
@@ -52,8 +52,9 @@ Plugin 'tyru/open-browser.vim' "Snipmate and other snippets - works in addition 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 "Plugin 'garbas/vim-snipmate'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'msanders/snipmate.vim'
+"Plugin 'msanders/snipmate.vim'
 "Syntaxchekers
 Plugin 'vim-syntastic/syntastic' "Formatting, Automatic line spacer :   :Tabularize /, - Help at https://raw.githubusercontent.com/godlygeek/tabular/master/doc/Tabular.txt
 Plugin 'godlygeek/tabular'
@@ -64,6 +65,10 @@ Plugin 'tomtom/tcomment_vim' "Grep, find, replace text in files by filetype, buf
 Plugin 'vim-scripts/EasyGrep'
 Plugin 'Shougo/unite.vim' "Has a lot of litereture read throughly before creating bindings - Help https://github.com/Shougo/unite.vim
 Plugin 'vim-scripts/YankRing.vim' "Yank history for vim - Help at https://github.com/vim-scripts/YankRing.vim
+"tab behaviour
+Plugin 'ervandew/supertab'
+"Auto insert closing braces and brackets etc. behaviour
+Plugin 'raimondi/delimitmate'
 "Puppet plugins
 Plugin 'rodjek/vim-puppet'
 Plugin 'majutsushi/tagbar' "<F8> :TagbarToggle tags support for current file
@@ -146,6 +151,17 @@ autocmd FileType ruby,eruby set filetype=ruby.eruby.chef
 " if has('conceal')
 "   set conceallevel=2 concealcursor=niv
 "   endif
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"Ultrasnip behaviour config
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "Tagbar settings
 nmap <F8> :TagbarToggle<CR>
@@ -377,7 +393,10 @@ cmap w!! w !sudo tee % >/dev/null
   "au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
 "augroup END
 " let g:skipview_files = ['*\.vim'] 
-
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 " set background=dark
 " -new http://nvie.com/posts/how-i-boosted-my-vim/
@@ -404,11 +423,12 @@ endif
 "if &t_Co >= 256 || has("gui_running")
 "    colorscheme mustang
 "endif
-
-if &t_Co > 2 || has("gui_running")
-    " switch syntax highlighting on, when the terminal has colors
-    syntax on
-endif
+syntax on
+color mustang
+"if &t_Co > 2 || has("gui_running")
+"     switch syntax highlighting on, when the terminal has colors
+    "syntax on
+"endif
 """""""""""""""""""""""""""""
 
 "Mouse settings
