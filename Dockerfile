@@ -72,7 +72,7 @@ USER $sn
 RUN curl -L https://github.com/kubernetes/kompose/releases/download/v1.11.0/kompose-linux-amd64 -o $HOME/.local/bin/kompose && chmod +x $HOME/.local/bin/kompose 
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o $HOME/.local/bin/kubectl && chmod +x $HOME/.local/bin/kubectl
 RUN git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" && ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
-RUN pip install awscli saws pylint --upgrade --user
+RUN pip install awscli saws pylint st2client --upgrade --user
 #RUN vim -E -u NONE -S $HOME/.vimrc +qall
 CMD sudo /usr/sbin/sshd -D
 EXPOSE 22

@@ -81,7 +81,9 @@ Plugin 'majutsushi/tagbar' "<F8> :TagbarToggle tags support for current file
 "Statusbar
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
+"ctags for code discovery
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 
 " Plugin 'vim-jira-complete'
 " Plugin 'rafi/vim-unite-issue'
@@ -105,6 +107,10 @@ filetype off                  " required
 """"""""""""""""""""""""""""""""""""""""""""""
 "Neosnippet vs snipmate conflict solution
 
+""""""""""""""""""""""""""""""""""""""""""""""
+"ctrlP keymaps
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
 
 """"""""""""""""""""""""""""""""""""""""""""""
 "Nerdtree tab navigation
@@ -200,7 +206,17 @@ let g:jedi#rename_command = "<leader>r"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+"Close all buffers but current one
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
 
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
+nmap <Leader>\c :call CloseAllBuffersButCurrent()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 "Nerd tree settings
 
 "let NERDTreeMapOpenInTab='\r'

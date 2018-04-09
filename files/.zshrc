@@ -156,3 +156,4 @@ zstyle ':completion:*:hosts' hosts $_ssh_config
 #Kompose autocompletion 
 source <(kompose completion zsh)
 source <(kubectl completion zsh)
+source <(helm completion zsh)
