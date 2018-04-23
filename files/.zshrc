@@ -157,6 +157,10 @@ zstyle ':completion:*:hosts' hosts $_ssh_config
 source <(kompose completion zsh)
 source <(kubectl completion zsh)
 source <(helm completion zsh)
+source /usr/local/bin/aws_zsh_completer.sh
+
 set -o ignoreeof
 
 
+LC_ALL=en_US.UTF-8
+LANG=en_US.UTF-8
